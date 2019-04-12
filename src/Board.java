@@ -34,7 +34,10 @@ public class Board extends JPanel{
 		mancalas[1] = new Mancala(0, 25, 40, 130);
 		
 		//initialize pits
-		for(int i = 0; i<pits.length; i++) {
+		for(int i = 0; i<6; i++) {
+			pits[i] = new Pit(0, 40, 45, 50, 4);
+		}
+		for(int i = 6; i<12; i++) {
 			pits[i] = new Pit(0, 0, 45, 50, 4);
 		}
 		
