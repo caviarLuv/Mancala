@@ -5,12 +5,12 @@ import javax.swing.JFrame;
 public class Frame extends JFrame {
 	public Frame() {
 		setSize(400,300);
-		//this.setResizable(false);
+		this.setResizable(false);
 		Board b = new Board(this.getSize());
 		
-		this.setLayout(new FlowLayout());
+		this.setLayout(null);
 		add(b);	
-		this.pack();
+		//this.pack();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
