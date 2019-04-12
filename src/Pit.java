@@ -1,5 +1,9 @@
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
+
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class Pit implements Part{
 	private int x;
@@ -7,12 +11,14 @@ public class Pit implements Part{
 	private int h;
 	private int k;
 	private int stones;
+	private ArrayList<ChangeListener> cl;
 	public Pit(int x, int y, int h, int k, int initialStone) {
 		this.x = x;
 		this.y = y;
 		this.h = h;
 		this.k = k;
 		this.stones = initialStone;
+		cl = new ArrayList<ChangeListener>();
 	}
 	
 	@Override
@@ -22,12 +28,20 @@ public class Pit implements Part{
 		g2.draw(p);
 	}
 
+	public void addChangeListener(ChangeListener l) {
+		cl.add(l);
+	}
+	
 	public int getStone() {
 		return stones;
 	}
+	
 	@Override
 	public void addStone() {
-		stones ++;		
+		stones ++;
+		for(int i = 0; i<cl.size(); i++) {
+			cl.get(i).stateChanged(new ChangeEvent(this));
+		}
 	}
 
 }

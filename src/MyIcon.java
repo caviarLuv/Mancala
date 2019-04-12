@@ -31,4 +31,7 @@ public class MyIcon implements Icon{
 		return h;
 	}
 
+	public Part getPart() {
+		return p;
+	}
 }

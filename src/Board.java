@@ -8,8 +8,10 @@ import java.awt.event.ActionListener;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
-public class Board extends JPanel{
+public class Board extends JPanel implements ChangeListener{
 	public static final int NUM_OF_PITS = 12;
 	public static final int NUM_OF_MANCALAS = 2;
 	private Pit[] pits;
@@ -36,9 +38,11 @@ public class Board extends JPanel{
 		//initialize pits
 		for(int i = 0; i<6; i++) {
 			pits[i] = new Pit(0, 40, 45, 50, 4);
+			pits[i].addChangeListener(this);
 		}
 		for(int i = 6; i<12; i++) {
 			pits[i] = new Pit(0, 0, 45, 50, 4);
+			pits[i].addChangeListener(this);
 		}
 		
 		
@@ -49,6 +53,14 @@ public class Board extends JPanel{
 		grid.setLayout(layout);
 		for(int i = 0; i<pits.length; i++) {	
 			JButton b = new JButton(new MyIcon(pits[i],45,50));
+			b.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					((MyIcon)b.getIcon()).getPart().addStone();		
+				}
+				
+			});
 			b.setSize(45,50);
 			grid.add(b);
 		}
@@ -80,6 +92,13 @@ public class Board extends JPanel{
 		Graphics2D g2 = (Graphics2D) g;
 //		Rectangle2D.Double board = new Rectangle2D.Double(10, 60, w, h);  //x = 10; y = 60
 		//g2.draw(board);
+	}
+
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		this.repaint();
+		
 	}
 }
 
