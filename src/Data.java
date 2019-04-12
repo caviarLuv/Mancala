@@ -49,7 +49,7 @@ public class Data {
 			playerB[i] = stones;
 		}
 		undoA = Arrays.copyOf(playerA, playerA.length);
-		undoB = Arrays.copyOf(playerA, playerB.length);;
+		undoB = Arrays.copyOf(playerA, playerB.length);
 	}
 	
 	
@@ -61,9 +61,13 @@ public class Data {
 			{
 				undoAmount--;
 			}
+			else if(isPlayerA)
+			{
+				playerBUndo = true;
+			}
 			else
 			{
-				
+				playerAUndo = true;
 			}
 		}
 	}
