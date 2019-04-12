@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.event.*;
 
@@ -6,8 +7,17 @@ public class Data {
 	
 	//who's turn is it
 	private boolean isPlayerA;
+	
+	//has game ended
 	private boolean gameEnd;
+	
+	//undo stuff
+	private boolean playerAUndo;
+	private boolean playerBUndo;
 	private boolean canUndo;
+	
+	private int undoAmount;
+	
 	
 	//the pits(0-5) and the mancala(6) 
 	private int[] playerA;
@@ -15,6 +25,7 @@ public class Data {
 	
 	private int[] undoA;
 	private int[] undoB;
+
 	
 	private ArrayList<ChangeListener> listeners;
 	
@@ -29,16 +40,38 @@ public class Data {
 		listeners = new ArrayList<>();
 		isPlayerA = true;
 		gameEnd = false;
+		playerAUndo = false;
+		playerBUndo = false;
+		undoAmount = 3;
 		for(int i = 0; i < 6; i++)
 		{
 			playerA[i] = stones;
 			playerB[i] = stones;
 		}
-		undoA = playerA;
-		undoB = playerB;
+		undoA = Arrays.copyOf(playerA, playerA.length);
+		undoB = Arrays.copyOf(playerA, playerB.length);;
 	}
 	
 	
+	public void undo()
+	{
+		if(undoAmount > 0)
+		{
+			if(playerAUndo||playerBUndo)
+			{
+				undoAmount--;
+			}
+			else
+			{
+				
+			}
+		}
+	}
+	
+	/**
+	 * Method carries out game rules for if a pit has been selected 
+	 * @param pit the pit that has been selected
+	 */
 	public void select(int pit)
 	{
 		int[] side = playerB;
@@ -141,6 +174,12 @@ public class Data {
 		return isPlayerA;
 	}
 	
+	/**
+	 * Method carries out if a capture is being made
+	 * @param cSide the current side to add to
+	 * @param oppSide the opposite side to capture pieces
+	 * @param pit which pit is capturing
+	 */
 	public void capture(int[] cSide, int[] oppSide, int pit)
 	{
 		cSide[pit-1] = 0;
@@ -149,6 +188,11 @@ public class Data {
 		cSide[6] += addStone;
 	}
 	
+	
+	/**
+	 * Method carries out final steps if one side is empty
+	 * @param nonEmpty the other array that is not empty
+	 */
 	public void gameEndProtocal(int[] nonEmpty)
 	{
 		for(int i = 0; i < nonEmpty.length-1; i++)
@@ -158,7 +202,13 @@ public class Data {
 		}
 		gameEnd = true;
 	}
-
+	
+	
+	/**
+	 * Method checks if given array is empty
+	 * @param test the array to test
+	 * @return true if the array is empty
+	 */
 	public boolean isEmpty(int[] test)
 	{
 		boolean empty = true;
