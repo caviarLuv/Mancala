@@ -8,8 +8,9 @@ public class Frame extends JFrame {
 		//this.setResizable(false);
 		Board b = new Board(this.getSize());
 		
-		this.setLayout(null);
+		this.setLayout(new FlowLayout());
 		add(b);	
+		this.pack();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

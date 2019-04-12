@@ -14,7 +14,7 @@ public class Board extends JPanel{
 	public static final int NUM_OF_MANCALAS = 2;
 	private Pit[] pits;
 	private Mancala[] mancalas;
-	
+	private JPanel grid;
 	public Board(Dimension d) {
 		//this.setSize(d);
 		int w = (int) d.getWidth();
@@ -31,27 +31,25 @@ public class Board extends JPanel{
 		mancalas[1] = new Mancala(w-50, 0, 50, h);
 		
 		
-		JPanel grid = new JPanel();
+		grid = new JPanel();
 		//grid.setBounds(50, 0, w-100, h);
-	    grid.setSize(w-100, h);
+	   // grid.setSize(w-100, h);
 		GridLayout layout = new GridLayout(2, 6);
 		grid.setLayout(layout);
 		for(int i = 0; i<pits.length; i++) {
-		
+			grid.add(new JButton());
 		}
 		
 		
-		JLabel m1 = new JLabel(new MyIcon(mancalas[0], w, h));
-		m1.setBounds(0, 0,w, h);
-		JLabel m2 = new JLabel(new MyIcon(mancalas[1], w, h));
-		m2.setBounds(0, 0, w, h);
+		JLabel m1 = new JLabel(new MyIcon(mancalas[0], 50, h));
+		JLabel m2 = new JLabel(new MyIcon(mancalas[1], 50, h));
+
 		
 		
 		this.setLayout(new BorderLayout());
 		this.add(m1, BorderLayout.WEST);
 		this.add(m2, BorderLayout.EAST);
 		this.add(grid, BorderLayout.CENTER);
-		
 		
 	}
 	
