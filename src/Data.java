@@ -57,17 +57,21 @@ public class Data {
 	{
 		if(undoAmount > 0)
 		{
-			if(playerAUndo||playerBUndo)
+			playerA = Arrays.copyOf(undoA,undoA.length);
+			playerB = Arrays.copyOf(undoB,undoB.length);
+			isPlayerA = !isPlayerA;
+			undoAmount--;
+			
+			if(!(playerAUndo||playerBUndo))
 			{
-				undoAmount--;
-			}
-			else if(isPlayerA)
-			{
-				playerBUndo = true;
-			}
-			else
-			{
-				playerAUndo = true;
+				if(isPlayerA)
+				{
+					playerBUndo = true;
+				}
+				else
+				{
+					playerAUndo = true;
+				}
 			}
 		}
 	}
@@ -176,6 +180,11 @@ public class Data {
 	public boolean getIsPLayerA()
 	{
 		return isPlayerA;
+	}
+	
+	public boolean getGameEnd()
+	{
+		return gameEnd;
 	}
 	
 	/**
