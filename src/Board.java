@@ -14,58 +14,99 @@ import javax.swing.event.ChangeListener;
 public class Board extends JPanel implements ChangeListener{
 	public static final int NUM_OF_PITS = 12;
 	public static final int NUM_OF_MANCALAS = 2;
-	private Pit[] pits;
+	private Pit[] pitsA;
+	private Pit[] pitsB;
+	
 	private Mancala[] mancalas;
 	private JPanel grid;
 	private int w;
 	private int h;
+	private Data model;
 	
-	public Board(Dimension d) {
-		
+	public Board(Dimension d, Data model) {
+		this.model = model;
 		w = 380;
 		h = 180;
 		this.setBounds(10,60,w,h);
 		
+
+		int[] tmpA = model.getAData();
+		int[] tmpB = model.getBData();
 		
 		
-		pits = new Pit[NUM_OF_PITS];
+		pitsA = new Pit[6];
+		pitsB = new Pit[6];
 		mancalas = new Mancala[NUM_OF_MANCALAS];
 		
 		//initialize mancala
-		mancalas[0] = new Mancala(0, 25, 40, 130);
-		mancalas[1] = new Mancala(0, 25, 40, 130);
+		JPanel mancalaA = new JPanel();
+		JPanel mancalaB = new JPanel();
+		
+		
+		JLabel mALabel = new JLabel("Mancala A");
+		mancalas[1] = new Mancala(0, 25, 40, 130, tmpA[6]);
+		
+		JLabel mBLabel = new JLabel("Mancala B");
+		mancalas[0] = new Mancala(0, 25, 40, 130, tmpB[6]);
+		
+		
+		JLabel mB = new JLabel(new MyIcon(mancalas[0], 50, h));	
+		JLabel mA = new JLabel(new MyIcon(mancalas[1], 50, h));
+
+		
+		mancalaA.add(mA);
+		mancalaA.add(mALabel);
+		mancalaB.add(mBLabel);
+		mancalaB.add(mB);
 		
 		//initialize pits
 		for(int i = 0; i<6; i++) {
-			pits[i] = new Pit(0, 40, 45, 50, 4);
-			pits[i].addChangeListener(this);
-		}
-		for(int i = 6; i<12; i++) {
-			pits[i] = new Pit(0, 0, 45, 50, 4);
-			pits[i].addChangeListener(this);
+			//a
+			pitsA[i] = new Pit(0, 40, 45, 50, tmpA[i], "A"+(i+1));
+		
+			//b
+			pitsB[i] = new Pit(0, 0, 45, 50, tmpB[i],"B"+(i+1));
 		}
 		
 		
 		//components
 		grid = new JPanel();
-		//grid.setBounds(x, y, width, height);
-		GridLayout layout = new GridLayout(2, 6);
+		grid.setPreferredSize(new Dimension(270, 100));
+		GridLayout layout = new GridLayout(2, 6, 0, 0);
 		grid.setLayout(layout);
-		for(int i = 0; i<pits.length; i++) {	
-			JButton b = new JButton(new MyIcon(pits[i],45,50));
+		//a
+		for(int i = 0; i<pitsA.length; i++) {	
+			JButton b = new JButton(new MyIcon(pitsA[i],45,50));
+			b.setPreferredSize(new Dimension(45, 50));
 			b.addActionListener(new ActionListener() {
-
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					((MyIcon)b.getIcon()).getPart().addStone();		
+					model.select(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex());
+					//((Pit)(((MyIcon) b.getIcon()).getPart())).getLabelNum();		
 				}
-				
+			
 			});
-			b.setSize(45,50);
 			grid.add(b);
 		}
 		
+		//b
+		for(int i = 0; i<pitsB.length; i++) {	
+			JButton b = new JButton(new MyIcon(pitsB[i],45,50));
+			b.setPreferredSize(new Dimension(45, 50));
+			b.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					model.select(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex());
+					
+					//((MyIcon)b.getIcon()).getPart().addStone();		
+				}
+			
+			});
+			grid.add(b);
+		}
 		
+<<<<<<< HEAD
 		
 		JPanel mancalaA = new JPanel();
 		JPanel mancalaB = new JPanel();
@@ -83,16 +124,31 @@ public class Board extends JPanel implements ChangeListener{
 		JLabel playerB = new JLabel("Player B");
 		playerA.setHorizontalAlignment(SwingConstants.CENTER);
 		playerB.setHorizontalAlignment(SwingConstants.CENTER);
+=======
+>>>>>>> upstream/master
 
 		
 		
+		JLabel playerA = new JLabel("Player A");
+		JLabel playerB = new JLabel("Player B");
+		playerA.setHorizontalAlignment(SwingConstants.CENTER);
+		playerB.setHorizontalAlignment(SwingConstants.CENTER);
+		
 		this.setLayout(new BorderLayout());
+<<<<<<< HEAD
 		this.add(mancalaA, BorderLayout.EAST);
 		this.add(mancalaB, BorderLayout.WEST);
 		this.add(grid, BorderLayout.CENTER);
 		this.add(playerB, BorderLayout.NORTH);
 		this.add(playerA, BorderLayout.SOUTH);
 		
+=======
+		this.add(mancalaB, BorderLayout.WEST);
+		this.add(mancalaA, BorderLayout.EAST);
+		this.add(grid, BorderLayout.CENTER);
+		this.add(playerA, BorderLayout.NORTH);
+		this.add(playerB, BorderLayout.SOUTH);
+>>>>>>> upstream/master
 	}
 	
 	
@@ -112,8 +168,18 @@ public class Board extends JPanel implements ChangeListener{
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		this.repaint();
+		int[] tmpA = model.getAData();
+		int[] tmpB = model.getBData();
 		
+		for(int i = 0; i<6; i++) {
+			//a
+			pitsA[i].setStone(tmpA[i]);
+			//b
+			pitsB[i].setStone(tmpB[i]);
+		}
+		mancalas[1].setStone(tmpA[6]);
+		mancalas[0].setStone(tmpB[6]);
+		repaint();	
 	}
 }
 
