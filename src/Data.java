@@ -101,7 +101,7 @@ public class Data {
 	 * @param pit the pit that has been selected
 	 */
 	public void select(int pit)
-	{
+	{System.out.println("select in progess");
 		int[] side = playerB;
 		prevPlayerWasA = false;
 		if(isPlayerA)

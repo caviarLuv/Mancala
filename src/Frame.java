@@ -3,15 +3,19 @@ import java.awt.FlowLayout;
 import javax.swing.JFrame;
 
 public class Frame extends JFrame {
-	public Frame() {
+	private Board b;
+	public Frame(Data model) {
 		setSize(400,300);
 		this.setResizable(false);
-		Board b = new Board(this.getSize());
+		b = new Board(this.getSize(), model);
 		
-		this.setLayout(null);
+		this.setLayout(new FlowLayout());
 		add(b);	
-		//this.pack();
+		this.pack();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	public Board getBoard() {
+		return b;
 	}
 }
