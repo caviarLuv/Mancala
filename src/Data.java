@@ -14,6 +14,7 @@ public class Data {
 	//undo stuff
 	private boolean playerAUndo;
 	private boolean playerBUndo;
+	private boolean prevPlayerWasA;
 	private boolean canUndo;
 	
 	private int undoAmount;
@@ -57,17 +58,28 @@ public class Data {
 	{
 		if(undoAmount > 0)
 		{
-			if(playerAUndo||playerBUndo)
+			playerA = Arrays.copyOf(undoA,undoA.length);
+			playerB = Arrays.copyOf(undoB,undoB.length);
+			if(prevPlayerWasA)
 			{
-				undoAmount--;
-			}
-			else if(isPlayerA)
-			{
-				playerBUndo = true;
+				isPlayerA = true;
 			}
 			else
 			{
-				playerAUndo = true;
+				isPlayerA = false;
+			}
+			undoAmount--;
+			
+			if(!(playerAUndo||playerBUndo))
+			{
+				if(isPlayerA)
+				{
+					playerBUndo = true;
+				}
+				else
+				{
+					playerAUndo = true;
+				}
 			}
 		}
 	}
@@ -178,6 +190,11 @@ public class Data {
 		return isPlayerA;
 	}
 	
+	public boolean getGameEnd()
+	{
+		return gameEnd;
+	}
+	
 	/**
 	 * Method carries out if a capture is being made
 	 * @param cSide the current side to add to
@@ -225,6 +242,16 @@ public class Data {
 			}
 		}
 		return empty;
+	}
+	
+	public int[] getAData()
+	{
+		return playerA;
+	}
+	
+	public int[] getBData()
+	{
+		return playerB;
 	}
 	
 }
