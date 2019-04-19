@@ -109,6 +109,7 @@ public class Data {
 			side = playerA;
 			prevPlayerWasA = true;
 		}
+		
 		if(canUndo)
 		{
 			undoAmount = 3;
@@ -117,7 +118,7 @@ public class Data {
 		
 		int numOfStones = side[pit];
 		int counter = 7;
-		side[pit] = 0;
+		side[pit] = 0; 
 		pit++;
 		
 		while(numOfStones > 0)
@@ -127,6 +128,17 @@ public class Data {
 				side[pit]++;
 				numOfStones--;
 				pit++;
+				for(int i : getAData())
+				{
+					System.out.print(i + " ");
+				}
+				System.out.println();
+				for(int i : getBData())
+				{
+					System.out.print(i + " ");
+				}
+				System.out.println();
+				System.out.println();
 			}
 			if(pit == counter && numOfStones > 0)
 			{
