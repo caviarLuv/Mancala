@@ -175,8 +175,9 @@ public class Data {
 			{
 				isPlayerA = !isPlayerA;
 			}
-			isPlayerA = !isPlayerA;
 		}
+
+		isPlayerA = !isPlayerA;
 		
 		if(isEmpty(playerA))
 		{
