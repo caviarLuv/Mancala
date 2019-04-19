@@ -19,9 +19,10 @@ public class Board extends JPanel implements ChangeListener{
 	private JPanel grid;
 	private int w;
 	private int h;
+	private Data model;
 	
-	public Board(Dimension d) {
-		
+	public Board(Dimension d, Data model) {
+		this.model = model;
 		w = 380;
 		h = 180;
 		this.setBounds(10,60,w,h);
@@ -48,20 +49,19 @@ public class Board extends JPanel implements ChangeListener{
 		
 		//components
 		grid = new JPanel();
-		//grid.setBounds(x, y, width, height);
-		GridLayout layout = new GridLayout(2, 6);
+		grid.setPreferredSize(new Dimension(270, 100));
+		GridLayout layout = new GridLayout(2, 6, 0, 0);
 		grid.setLayout(layout);
 		for(int i = 0; i<pits.length; i++) {	
 			JButton b = new JButton(new MyIcon(pits[i],45,50));
+			b.setPreferredSize(new Dimension(45, 50));
 			b.addActionListener(new ActionListener() {
-
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					((MyIcon)b.getIcon()).getPart().addStone();		
 				}
-				
+			
 			});
-			b.setSize(45,50);
 			grid.add(b);
 		}
 		
@@ -97,8 +97,7 @@ public class Board extends JPanel implements ChangeListener{
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		this.repaint();
-		
+		this.repaint();	
 	}
 }
 
