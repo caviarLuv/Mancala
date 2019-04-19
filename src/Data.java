@@ -14,6 +14,7 @@ public class Data {
 	//undo stuff
 	private boolean playerAUndo;
 	private boolean playerBUndo;
+	private boolean prevPlayerWasA;
 	private boolean canUndo;
 	
 	private int undoAmount;
@@ -59,7 +60,14 @@ public class Data {
 		{
 			playerA = Arrays.copyOf(undoA,undoA.length);
 			playerB = Arrays.copyOf(undoB,undoB.length);
-			isPlayerA = !isPlayerA;
+			if(prevPlayerWasA)
+			{
+				isPlayerA = true;
+			}
+			else
+			{
+				isPlayerA = false;
+			}
 			undoAmount--;
 			
 			if(!(playerAUndo||playerBUndo))
@@ -234,6 +242,16 @@ public class Data {
 			}
 		}
 		return empty;
+	}
+	
+	public int[] getAData()
+	{
+		return playerA;
+	}
+	
+	public int[] getBData()
+	{
+		return playerB;
 	}
 	
 }
