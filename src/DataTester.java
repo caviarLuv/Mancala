@@ -1,19 +1,22 @@
 
 public class DataTester {
-	
 	public static void main(String[] args)
 	{
 		Data myData = new Data(3);
 		
 		print(myData);
 		
-		myData.select(2);
+		myData.select(4);
 		
 		print(myData);
 		
 		myData.select(1);
+		
 		print(myData);
 		
+		myData.select(1);
+		
+		print(myData);
 	}
 	
 	public static void print(Data myData)
@@ -30,7 +33,6 @@ public class DataTester {
 		System.out.println();
 		System.out.println();
 	}
-	
 }
 
 
