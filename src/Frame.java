@@ -6,6 +6,7 @@ public class Frame extends JFrame {
 	private Board b;
 	public Frame(Data model) {
 		setSize(400,300);
+		this.setTitle("Mancala");
 		this.setResizable(false);
 		b = new Board(this.getSize(), model);
 		
