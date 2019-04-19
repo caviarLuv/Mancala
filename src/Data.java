@@ -100,7 +100,8 @@ public class Data {
 	 * Method carries out game rules for if a pit has been selected 
 	 * @param pit the pit that has been selected
 	 */
-	public void select(int pit) {
+	public void select(int pit)
+	{System.out.println("select in progess");
 		int[] side = playerB;
 		prevPlayerWasA = false;
 		if(isPlayerA)
@@ -132,7 +133,18 @@ public class Data {
 				side[pit]++;
 				numOfStones--;
 				pit++;
-	
+				/**
+				for(int i : getAData())
+				{
+					System.out.print(i + " ");
+				}
+				System.out.println();
+				for(int i : getBData())
+				{
+					System.out.print(i + " ");
+				}
+				System.out.println();
+				System.out.println();**/
 			}
 			if(pit == counter && numOfStones > 0)
 			{
@@ -177,6 +189,8 @@ public class Data {
 			}
 		}
 
+		isPlayerA = !isPlayerA;
+		
 		isPlayerA = !isPlayerA;
 		
 		if(isEmpty(playerA))
