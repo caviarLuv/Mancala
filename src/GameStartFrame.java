@@ -10,6 +10,7 @@ public class GameStartFrame extends JFrame{
 	private int initialStones;
 	public GameStartFrame() {
 		final Container contentPane = this.getContentPane();
+		this.setLocation(500, 0);
 		this.setTitle("Option");
 		initialStones = 0;
 		
