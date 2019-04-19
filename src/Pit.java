@@ -11,19 +11,22 @@ public class Pit implements Part{
 	private int h;
 	private int k;
 	private int stones;
+	private String label;
 	private ArrayList<ChangeListener> cl;
-	public Pit(int x, int y, int h, int k, int initialStone) {
+	public Pit(int x, int y, int h, int k, int initialStone, String label) {
 		this.x = x;
 		this.y = y;
 		this.h = h;
 		this.k = k;
 		this.stones = initialStone;
 		cl = new ArrayList<ChangeListener>();
+		this.label = label;
 	}
 	
 	@Override
 	public void draw(Graphics2D g2) {
 		Rectangle2D.Double p = new Rectangle2D.Double(x, y, h, k);
+		g2.drawString(label, x+h/2, y+k);
 		g2.drawString(stones + "", x+h/2, y+k/2);
 		g2.draw(p);
 	}
@@ -32,8 +35,16 @@ public class Pit implements Part{
 		cl.add(l);
 	}
 	
+	public int getLabelNum() {
+		return Integer.parseInt(label.substring(1));
+	}
 	public int getStone() {
 		return stones;
+	}
+	
+	public void setStone(int s) {
+		System.out.println(s);
+		stones = s;
 	}
 	
 	@Override
