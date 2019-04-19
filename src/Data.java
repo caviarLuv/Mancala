@@ -115,9 +115,15 @@ public class Data {
 		}
 		canUndo = true;
 		
+		if(canUndo)
+		{
+			undoAmount = 3;
+		}
+		canUndo = true;
+		
 		int numOfStones = side[pit];
 		int counter = 7;
-		side[pit] = 0;
+		side[pit] = 0; 
 		pit++;
 		
 		while(numOfStones > 0)
@@ -127,6 +133,7 @@ public class Data {
 				side[pit]++;
 				numOfStones--;
 				pit++;
+	
 			}
 			if(pit == counter && numOfStones > 0)
 			{
@@ -263,6 +270,7 @@ public class Data {
 			{
 				empty = false;
 			}
+			counter++;
 		}
 		return empty;
 	}
