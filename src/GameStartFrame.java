@@ -8,8 +8,10 @@ import javax.swing.JFrame;
 public class GameStartFrame extends JFrame{
 	private Data d;
 	private int initialStones;
-	public GameStartFrame() {
+	public GameStartFrame(Data d) {
+		this.d = d;
 		final Container contentPane = this.getContentPane();
+		this.setLocation(500, 0);
 		this.setTitle("Option");
 		initialStones = 0;
 		
