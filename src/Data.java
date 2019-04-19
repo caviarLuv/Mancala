@@ -188,6 +188,8 @@ public class Data {
 				isPlayerA = !isPlayerA;
 			}
 		}
+
+		isPlayerA = !isPlayerA;
 		
 		isPlayerA = !isPlayerA;
 		
