@@ -106,49 +106,21 @@ public class Board extends JPanel implements ChangeListener{
 			grid.add(b);
 		}
 		
-<<<<<<< HEAD
-		
-		JPanel mancalaA = new JPanel();
-		JPanel mancalaB = new JPanel();
-		JLabel m1 = new JLabel(new MyIcon(mancalas[0], 50, h));	
-		JLabel m1Label = new JLabel("Mancala A");
-		m1Label.setVerticalAlignment(JLabel.TOP);
-		mancalaA.add(m1);
-		mancalaA.add(m1Label);
-		JLabel m2 = new JLabel(new MyIcon(mancalas[1], 50, h));
-		JLabel m2Label = new JLabel("Mancala B");
-		m2Label.setVerticalAlignment(JLabel.TOP);
-		mancalaB.add(m2Label);
-		mancalaB.add(m2);
 		JLabel playerA = new JLabel("Player A");
 		JLabel playerB = new JLabel("Player B");
 		playerA.setHorizontalAlignment(SwingConstants.CENTER);
 		playerB.setHorizontalAlignment(SwingConstants.CENTER);
-=======
->>>>>>> upstream/master
-
 		
 		
-		JLabel playerA = new JLabel("Player A");
-		JLabel playerB = new JLabel("Player B");
-		playerA.setHorizontalAlignment(SwingConstants.CENTER);
-		playerB.setHorizontalAlignment(SwingConstants.CENTER);
+		
 		
 		this.setLayout(new BorderLayout());
-<<<<<<< HEAD
 		this.add(mancalaA, BorderLayout.EAST);
 		this.add(mancalaB, BorderLayout.WEST);
 		this.add(grid, BorderLayout.CENTER);
 		this.add(playerB, BorderLayout.NORTH);
 		this.add(playerA, BorderLayout.SOUTH);
 		
-=======
-		this.add(mancalaB, BorderLayout.WEST);
-		this.add(mancalaA, BorderLayout.EAST);
-		this.add(grid, BorderLayout.CENTER);
-		this.add(playerA, BorderLayout.NORTH);
-		this.add(playerB, BorderLayout.SOUTH);
->>>>>>> upstream/master
 	}
 	
 	
