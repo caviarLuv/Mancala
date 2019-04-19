@@ -6,10 +6,17 @@ public class DataTester {
 		
 		print(myData);
 		
-		myData.select(3);
+		myData.select(4);
 		
 		print(myData);
 		
+		myData.select(1);
+		
+		print(myData);
+		
+		myData.select(1);
+		
+		print(myData);
 	}
 	
 	public static void print(Data myData)
