@@ -106,20 +106,21 @@ public class Board extends JPanel implements ChangeListener{
 			grid.add(b);
 		}
 		
-
-		
-		
 		JLabel playerA = new JLabel("Player A");
 		JLabel playerB = new JLabel("Player B");
 		playerA.setHorizontalAlignment(SwingConstants.CENTER);
 		playerB.setHorizontalAlignment(SwingConstants.CENTER);
 		
+		
+		
+		
 		this.setLayout(new BorderLayout());
-		this.add(mancalaB, BorderLayout.WEST);
 		this.add(mancalaA, BorderLayout.EAST);
+		this.add(mancalaB, BorderLayout.WEST);
 		this.add(grid, BorderLayout.CENTER);
-		this.add(playerA, BorderLayout.NORTH);
-		this.add(playerB, BorderLayout.SOUTH);
+		this.add(playerB, BorderLayout.NORTH);
+		this.add(playerA, BorderLayout.SOUTH);
+		
 	}
 	
 	
