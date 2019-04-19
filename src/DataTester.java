@@ -6,9 +6,7 @@ public class DataTester {
 		
 		print(myData);
 		
-		System.out.println(myData.getAData()[0]);
-		
-		myData.select(0);
+		myData.select(3);
 		
 		print(myData);
 		
