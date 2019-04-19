@@ -100,8 +100,7 @@ public class Data {
 	 * Method carries out game rules for if a pit has been selected 
 	 * @param pit the pit that has been selected
 	 */
-	public void select(int pit)
-	{System.out.println("select in progess");
+	public void select(int pit) {
 		int[] side = playerB;
 		prevPlayerWasA = false;
 		if(isPlayerA)

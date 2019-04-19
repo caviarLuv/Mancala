@@ -7,18 +7,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 public class GameStartFrame extends JFrame{
 	private Data d;
-	
+	private int initialStones;
 	public GameStartFrame() {
 		final Container contentPane = this.getContentPane();
 		this.setTitle("Option");
-		
+		initialStones = 0;
 		
 		JButton three = new JButton("3 stones");
 		three.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				initialStones = 3;
 				
 			}
 			
@@ -28,7 +28,7 @@ public class GameStartFrame extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				initialStones = 4;
 				
 			}
 			
@@ -39,5 +39,9 @@ public class GameStartFrame extends JFrame{
 		this.add(four);
 		this.pack();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public int getInitialStone() {
+		return initialStones;
 	}
 }

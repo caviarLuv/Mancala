@@ -1,13 +1,17 @@
 
 public class DataTester {
+	
 	public static void main(String[] args)
 	{
 		Data myData = new Data(3);
 		
 		print(myData);
 		
-		myData.select(3);
+		myData.select(2);
 		
+		print(myData);
+		
+		myData.select(1);
 		print(myData);
 		
 	}
@@ -26,6 +30,7 @@ public class DataTester {
 		System.out.println();
 		System.out.println();
 	}
+	
 }
 
 

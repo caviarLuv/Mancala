@@ -39,13 +39,30 @@ public class Board extends JPanel implements ChangeListener{
 		mancalas = new Mancala[NUM_OF_MANCALAS];
 		
 		//initialize mancala
-		mancalas[0] = new Mancala(0, 25, 40, 130, tmpA[6]);
-		mancalas[1] = new Mancala(0, 25, 40, 130, tmpB[6]);
+		JPanel mancalaA = new JPanel();
+		JPanel mancalaB = new JPanel();
+		
+		
+		JLabel mALabel = new JLabel("Mancala A");
+		mancalas[1] = new Mancala(0, 25, 40, 130, tmpA[6]);
+		
+		JLabel mBLabel = new JLabel("Mancala B");
+		mancalas[0] = new Mancala(0, 25, 40, 130, tmpB[6]);
+		
+		
+		JLabel mB = new JLabel(new MyIcon(mancalas[0], 50, h));	
+		JLabel mA = new JLabel(new MyIcon(mancalas[1], 50, h));
+
+		
+		mancalaA.add(mA);
+		mancalaA.add(mALabel);
+		mancalaB.add(mBLabel);
+		mancalaB.add(mB);
 		
 		//initialize pits
 		for(int i = 0; i<6; i++) {
 			//a
-			pitsA[5-i] = new Pit(0, 40, 45, 50, tmpA[i], "A"+(i+1));
+			pitsA[i] = new Pit(0, 40, 45, 50, tmpA[i], "A"+(i+1));
 		
 			//b
 			pitsB[i] = new Pit(0, 0, 45, 50, tmpB[i],"B"+(i+1));
@@ -89,18 +106,20 @@ public class Board extends JPanel implements ChangeListener{
 			grid.add(b);
 		}
 		
-		
-		
-		JLabel m1 = new JLabel(new MyIcon(mancalas[0], 50, h));	
-		JLabel m2 = new JLabel(new MyIcon(mancalas[1], 50, h));
 
 		
 		
-		this.setLayout(new BorderLayout());
-		this.add(m1, BorderLayout.WEST);
-		this.add(m2, BorderLayout.EAST);
-		this.add(grid, BorderLayout.CENTER);
+		JLabel playerA = new JLabel("Player A");
+		JLabel playerB = new JLabel("Player B");
+		playerA.setHorizontalAlignment(SwingConstants.CENTER);
+		playerB.setHorizontalAlignment(SwingConstants.CENTER);
 		
+		this.setLayout(new BorderLayout());
+		this.add(mancalaB, BorderLayout.WEST);
+		this.add(mancalaA, BorderLayout.EAST);
+		this.add(grid, BorderLayout.CENTER);
+		this.add(playerA, BorderLayout.NORTH);
+		this.add(playerB, BorderLayout.SOUTH);
 	}
 	
 	
@@ -129,8 +148,8 @@ public class Board extends JPanel implements ChangeListener{
 			//b
 			pitsB[i].setStone(tmpB[i]);
 		}
-		mancalas[0].setStone(tmpA[6]);
-		mancalas[1].setStone(tmpB[6]);
+		mancalas[1].setStone(tmpA[6]);
+		mancalas[0].setStone(tmpB[6]);
 		repaint();	
 	}
 }
