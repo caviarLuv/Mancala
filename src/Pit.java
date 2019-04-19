@@ -35,15 +35,14 @@ public class Pit implements Part{
 		cl.add(l);
 	}
 	
-	public int getLabelNum() {
-		return Integer.parseInt(label.substring(1));
+	public int getActualIndex() {
+		return Integer.parseInt(label.substring(1))-1;
 	}
 	public int getStone() {
 		return stones;
 	}
 	
 	public void setStone(int s) {
-		System.out.println(s);
 		stones = s;
 	}
 	

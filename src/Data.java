@@ -36,28 +36,40 @@ public class Data {
 	 */
 	public Data(int stones)
 	{
+		//reg game init
 		playerA = new int[7];
 		playerB = new int[7];
 		listeners = new ArrayList<>();
 		isPlayerA = true;
 		gameEnd = false;
+		
+		//undo variable init
 		playerAUndo = false;
 		playerBUndo = false;
 		undoAmount = 3;
+		prevPlayerWasA = false;
+		canUndo = false;
+		
+		//pit init
 		for(int i = 0; i < 6; i++)
 		{
 			playerA[i] = stones;
 			playerB[i] = stones;
 		}
+		//more redo init
 		undoA = Arrays.copyOf(playerA, playerA.length);
 		undoB = Arrays.copyOf(playerA, playerB.length);
 	}
 	
-	
+	/**
+	 * Function undos the board state to the previous board
+	 * if canUndo is false or if undoAmount is >=0, nothing happens
+	 */
 	public void undo()
 	{
-		if(undoAmount > 0)
+		if(undoAmount > 0 && canUndo)
 		{
+			canUndo =false;
 			playerA = Arrays.copyOf(undoA,undoA.length);
 			playerB = Arrays.copyOf(undoB,undoB.length);
 			if(prevPlayerWasA)
@@ -91,10 +103,17 @@ public class Data {
 	public void select(int pit)
 	{System.out.println("select in progess");
 		int[] side = playerB;
+		prevPlayerWasA = false;
 		if(isPlayerA)
 		{
 			side = playerA;
+			prevPlayerWasA = true;
 		}
+		if(canUndo)
+		{
+			undoAmount = 3;
+		}
+		canUndo = true;
 		
 		int numOfStones = side[pit];
 		int counter = 7;
@@ -190,6 +209,10 @@ public class Data {
 		return isPlayerA;
 	}
 	
+	/**
+	 * Method gets if the game ended
+	 * @return boolean t/f if game has ended
+	 */
 	public boolean getGameEnd()
 	{
 		return gameEnd;
@@ -244,14 +267,30 @@ public class Data {
 		return empty;
 	}
 	
+	/**
+	 * Accessor for playerA's array
+	 * @return playerA an int[]
+	 */
 	public int[] getAData()
 	{
 		return playerA;
 	}
-	
+	/**
+	 * Accessor for playerB's array
+	 * @return playerB an int[]
+	 */
 	public int[] getBData()
 	{
 		return playerB;
+	}
+	
+	/**
+	 * Accessor for canUndp
+	 * @return boolean t/f if canUndo is t/f
+	 */
+	public boolean canUseUndo()
+	{
+		return canUndo;
 	}
 	
 }

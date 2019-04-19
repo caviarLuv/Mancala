@@ -45,12 +45,10 @@ public class Board extends JPanel implements ChangeListener{
 		//initialize pits
 		for(int i = 0; i<6; i++) {
 			//a
-			pitsA[i] = new Pit(0, 40, 45, 50, tmpA[i], "A"+(i+1));
-			pitsA[i].addChangeListener(this);
-
+			pitsA[5-i] = new Pit(0, 40, 45, 50, tmpA[i], "A"+(i+1));
+		
 			//b
 			pitsB[i] = new Pit(0, 0, 45, 50, tmpB[i],"B"+(i+1));
-			pitsB[i].addChangeListener(this);	
 		}
 		
 		
@@ -66,7 +64,7 @@ public class Board extends JPanel implements ChangeListener{
 			b.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					model.select(((Pit)(((MyIcon) b.getIcon()).getPart())).getLabelNum());
+					model.select(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex());
 					//((Pit)(((MyIcon) b.getIcon()).getPart())).getLabelNum();		
 				}
 			
@@ -81,7 +79,8 @@ public class Board extends JPanel implements ChangeListener{
 			b.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					model.select(((Pit)(((MyIcon) b.getIcon()).getPart())).getLabelNum());
+					
+					model.select(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex());
 					
 					//((MyIcon)b.getIcon()).getPart().addStone();		
 				}
