@@ -65,7 +65,7 @@ public class Board extends JPanel implements ChangeListener{
 			pitsA[i] = new Pit(0, 0, 45, 50, tmpA[i], "A"+(i+1));
 		
 			//b
-			pitsB[i] = new Pit(0, 40, 45, 50, tmpB[i],"B"+(6-i));
+			pitsB[i] = new Pit(0, 40, 45, 50, tmpB[i],"B"+(i+1));
 		}
 		
 		
@@ -75,7 +75,7 @@ public class Board extends JPanel implements ChangeListener{
 		GridLayout layout = new GridLayout(2, 6, 0, 0);
 		grid.setLayout(layout);
 		//b
-		for(int i = 0; i<pitsB.length; i++) {	
+		for(int i = pitsB.length -1 ; i>=0; i--) {	
 			JButton b = new JButton(new MyIcon(pitsB[i],45,50));
 			//b.setOpaque(false);
 			//b.setBorderPainted(false);
@@ -84,7 +84,7 @@ public class Board extends JPanel implements ChangeListener{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					System.out.println(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex());
-					model.select(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex());
+					model.select(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex(), false);
 				}
 			
 			});
@@ -100,7 +100,7 @@ public class Board extends JPanel implements ChangeListener{
 				public void actionPerformed(ActionEvent e) {
 					System.out.println(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex());
 				
-					model.select(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex());
+					model.select(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex(), true);
 					//((Pit)(((MyIcon) b.getIcon()).getPart())).getLabelNum();		
 				}
 			
