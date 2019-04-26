@@ -11,7 +11,7 @@ public class DataTester {
 		
 		while(true) {
 			System.out.println("Enter pit num");
-			myData.select(sc.nextInt());
+			//myData.select(sc.nextInt());
 			print(myData);
 		}
 	}
