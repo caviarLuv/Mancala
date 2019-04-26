@@ -43,6 +43,7 @@ public class GameStartFrame extends JFrame{
 		
 		JPanel instruction = new JPanel();
 		JTextArea prompt = new JTextArea("Choose the # of stones per pit");
+		prompt.setOpaque(false);
 		prompt.setEditable(false);
 		instruction.add(prompt);
 		instruction.setAlignmentX(Component.CENTER_ALIGNMENT);

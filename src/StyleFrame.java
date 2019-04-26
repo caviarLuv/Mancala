@@ -24,6 +24,7 @@ public class StyleFrame extends JFrame{
 		JPanel instruction = new JPanel();
 		JTextArea prompt = new JTextArea("Select a game theme");
 		prompt.setEditable(false);
+		prompt.setOpaque(false);
 		instruction.add(prompt);
 		instruction.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
