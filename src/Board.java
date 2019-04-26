@@ -105,21 +105,24 @@ public class Board extends JPanel implements ChangeListener{
 		}
 		
 	
-		
-		JLabel playerA = new JLabel("Player A");
+		JPanel undoPlusB = new JPanel();
+		undoPlusB.setLayout(new BoxLayout(undoPlusB, BoxLayout.PAGE_AXIS));		
 		JLabel playerB = new JLabel("Player B");
-		playerA.setHorizontalAlignment(SwingConstants.CENTER);
 		playerB.setHorizontalAlignment(SwingConstants.CENTER);
+		JButton undo = new JButton("Undo");
+		undoPlusB.add(undo);
+		undoPlusB.add(playerB);
 		
 		
-		
-		
+
+		JLabel playerA = new JLabel("Player A");
+		//playerA.setHorizontalAlignment(SwingConstants.CENTER);
 		this.setLayout(new BorderLayout());
 		this.add(mancalaA, BorderLayout.EAST);
 		this.add(mancalaB, BorderLayout.WEST);
 		this.add(grid, BorderLayout.CENTER);
-		this.add(playerB, BorderLayout.NORTH);
 		this.add(playerA, BorderLayout.SOUTH);
+		this.add(undoPlusB, BorderLayout.NORTH);
 		
 	}
 	

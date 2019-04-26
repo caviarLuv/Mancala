@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
@@ -24,7 +25,20 @@ public class Mancala implements Part{
 	
 	public void draw(Graphics2D g2) {
 		Rectangle2D.Double rec = new Rectangle2D.Double(x, y, w, h);
-		g2.drawString(stones + "", x+w/2, y+h/2);
+		
+		int stoneY = this.y;
+		int stoneX = this.x;
+		for(int i = 0; i<stones; i++) {
+			Ellipse2D.Double s = new Ellipse2D.Double(stoneX,stoneY,RADIUS,RADIUS);
+			if(stoneX+RADIUS*2 >= w) {
+				stoneY += RADIUS;
+				stoneX = this.x;
+			}
+			else {
+				stoneX += RADIUS;
+			}
+			g2.fill(s);
+		}
 		g2.draw(rec);
 	}
 

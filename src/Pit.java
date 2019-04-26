@@ -15,7 +15,6 @@ public class Pit implements Part{
 	private String label;
 	private ArrayList<ChangeListener> cl;
 	
-	public static final int RADIUS = 10;
 	public Pit(int x, int y, int h, int k, int initialStone, String label) {
 		this.x = x;
 		this.y = y;
