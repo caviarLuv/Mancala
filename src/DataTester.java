@@ -5,6 +5,9 @@ public class DataTester {
 	{
 		Data myData = new Data(3);
 		
+		boolean playerA = true;
+		
+		
 		print(myData);
 
 		Scanner sc = new Scanner(System.in);
@@ -12,6 +15,16 @@ public class DataTester {
 		while(true) {
 			System.out.println("Enter pit num");
 			//myData.select(sc.nextInt());
+			print(myData);
+			
+			System.out.println("Enter pit num");
+			//myData.select(sc.nextInt());
+			print(myData);
+			
+			myData.undo();
+			print(myData);
+			
+			myData.undo();
 			print(myData);
 		}
 	}
