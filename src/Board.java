@@ -62,10 +62,10 @@ public class Board extends JPanel implements ChangeListener{
 		//initialize pits
 		for(int i = 0; i<6; i++) {
 			//a
-			pitsA[i] = new Pit(0, 40, 45, 50, tmpA[i], "A"+(6-i));
+			pitsA[i] = new Pit(0, 0, 45, 50, tmpA[i], "A"+(i+1));
 		
 			//b
-			pitsB[i] = new Pit(0, 0, 45, 50, tmpB[i],"B"+(i+1));
+			pitsB[i] = new Pit(0, 40, 45, 50, tmpB[i],"B"+(6-i));
 		}
 		
 		
@@ -74,6 +74,23 @@ public class Board extends JPanel implements ChangeListener{
 		grid.setPreferredSize(new Dimension(270, 100));
 		GridLayout layout = new GridLayout(2, 6, 0, 0);
 		grid.setLayout(layout);
+		//b
+		for(int i = 0; i<pitsB.length; i++) {	
+			JButton b = new JButton(new MyIcon(pitsB[i],45,50));
+			//b.setOpaque(false);
+			//b.setBorderPainted(false);
+			b.setPreferredSize(new Dimension(70, 70));
+			b.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					System.out.println(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex());
+					model.select(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex());
+				}
+			
+			});
+			grid.add(b);
+		}
+		
 		//a
 		for(int i = 0; i<pitsA.length; i++) {	
 			JButton b = new JButton(new MyIcon(pitsA[i],45,50));
@@ -91,22 +108,7 @@ public class Board extends JPanel implements ChangeListener{
 			grid.add(b);
 		}
 		
-		//b
-		for(int i = 0; i<pitsB.length; i++) {	
-			JButton b = new JButton(new MyIcon(pitsB[i],45,50));
-			b.setPreferredSize(new Dimension(45, 50));
-			b.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					System.out.println(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex());
-					model.select(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex());
-					
-					//((MyIcon)b.getIcon()).getPart().addStone();		
-				}
-			
-			});
-			grid.add(b);
-		}
+	
 		
 		JLabel playerA = new JLabel("Player A");
 		JLabel playerB = new JLabel("Player B");
