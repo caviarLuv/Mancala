@@ -115,19 +115,26 @@ public class Data {
 			side = playerA;
 			prevPlayerWasA = true;
 		}
-		if(canUndo)
-		{
-			undoAmount = 3;
-		}
-		canUndo = true;
-		
-		if(canUndo)
-		{
-			undoAmount = 3;
-		}
-		canUndo = true;
 		
 		int numOfStones = side[pit];
+		if(numOfStones == 0 )
+		{
+			prevPlayerWasA = !prevPlayerWasA;
+			return;
+		}
+		
+		if(canUndo)
+		{
+			undoAmount = 3;
+		}
+		canUndo = true;
+		
+		if(canUndo)
+		{
+			undoAmount = 3;
+		}
+		canUndo = true;
+		
 		int counter = 7;
 		side[pit] = 0; 
 		pit++;
