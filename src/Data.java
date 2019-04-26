@@ -58,7 +58,7 @@ public class Data {
 		}
 		//more redo init
 		undoA = Arrays.copyOf(playerA, playerA.length);
-		undoB = Arrays.copyOf(playerA, playerB.length);
+		undoB = Arrays.copyOf(playerB, playerB.length);
 	}
 	
 	/**
@@ -102,7 +102,7 @@ public class Data {
 	 */
 	public void select(int pit, boolean playerAButton)
 	{
-	
+		
 		if(!((playerAButton && isPlayerA)||(!playerAButton && !isPlayerA)))
 		{
 			return;
@@ -125,12 +125,9 @@ public class Data {
 		
 		if(canUndo)
 		{
-			undoAmount = 3;
-		}
-		canUndo = true;
-		
-		if(canUndo)
-		{
+			System.out.println("Making copy");
+			undoA = Arrays.copyOf(playerA, playerA.length);
+			undoB = Arrays.copyOf(playerB, playerB.length);
 			undoAmount = 3;
 		}
 		canUndo = true;
@@ -146,18 +143,7 @@ public class Data {
 				side[pit]++;
 				numOfStones--;
 				pit++;
-				/**
-				for(int i : getAData())
-				{
-					System.out.print(i + " ");
-				}
-				System.out.println();
-				for(int i : getBData())
-				{
-					System.out.print(i + " ");
-				}
-				System.out.println();
-				System.out.println();**/
+			
 			}
 			if(pit == counter && numOfStones > 0)
 			{
