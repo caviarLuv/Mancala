@@ -239,7 +239,7 @@ public class Data {
 	 * @return boolean t/f if game has ended
 	 */
 	public boolean getGameEnd()
-	{
+	{ 
 		return gameEnd;
 	}
 	

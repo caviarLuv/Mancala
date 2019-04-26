@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.*;
@@ -76,36 +78,30 @@ public class Board extends JPanel implements ChangeListener{
 		grid.setLayout(layout);
 		//b
 		for(int i = pitsB.length -1 ; i>=0; i--) {	
-			JButton b = new JButton(new MyIcon(pitsB[i],45,50));
-			//b.setOpaque(false);
-			//b.setBorderPainted(false);
-			b.setPreferredSize(new Dimension(70, 70));
-			b.addActionListener(new ActionListener() {
+			JLabel l = new JLabel(new MyIcon(pitsB[i],45,50));
+			l.setPreferredSize(new Dimension(70, 70));
+			l.addMouseListener(new MouseAdapter() {
 				@Override
-				public void actionPerformed(ActionEvent e) {
-					System.out.println(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex());
-					model.select(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex(), false);
+				public void mousePressed(MouseEvent e) {
+					model.select(((Pit)(((MyIcon) l.getIcon()).getPart())).getActualIndex(), false);
 				}
 			
 			});
-			grid.add(b);
+			grid.add(l);
 		}
 		
 		//a
 		for(int i = 0; i<pitsA.length; i++) {	
-			JButton b = new JButton(new MyIcon(pitsA[i],45,50));
-			b.setPreferredSize(new Dimension(45, 50));
-			b.addActionListener(new ActionListener() {
+			JLabel l = new JLabel(new MyIcon(pitsA[i],45,50));
+			l.setPreferredSize(new Dimension(45, 50));
+			l.addMouseListener(new MouseAdapter() {
 				@Override
-				public void actionPerformed(ActionEvent e) {
-					System.out.println(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex());
-				
-					model.select(((Pit)(((MyIcon) b.getIcon()).getPart())).getActualIndex(), true);
-					//((Pit)(((MyIcon) b.getIcon()).getPart())).getLabelNum();		
+				public void mousePressed(MouseEvent e) {
+					model.select(((Pit)(((MyIcon) l.getIcon()).getPart())).getActualIndex(), true);
 				}
 			
 			});
-			grid.add(b);
+			grid.add(l);
 		}
 		
 	
