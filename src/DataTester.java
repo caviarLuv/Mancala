@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class DataTester {
 	public static void main(String[] args)
@@ -5,28 +6,28 @@ public class DataTester {
 		Data myData = new Data(3);
 		
 		print(myData);
+
+		Scanner sc = new Scanner(System.in);
 		
-		myData.select(4);
-		
-		print(myData);
-		
-		myData.select(1);
-		
-		print(myData);
-		
-		myData.select(1);
-		
-		print(myData);
+		while(true) {
+			System.out.println("Enter pit num");
+			myData.select(sc.nextInt());
+			print(myData);
+		}
 	}
 	
 	public static void print(Data myData)
 	{
-		for(int i : myData.getAData())
+		
+		int[] barr = myData.getBData();
+		
+		for(int i = barr.length-1; i >= 0; i-- )
 		{
-			System.out.print(i + " ");
+			System.out.print(barr[i] + " ");
 		}
 		System.out.println();
-		for(int i : myData.getBData())
+		System.out.print("  ");
+		for(int i : myData.getAData())
 		{
 			System.out.print(i + " ");
 		}
