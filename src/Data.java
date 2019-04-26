@@ -101,7 +101,7 @@ public class Data {
 	 * @param pit the pit that has been selected
 	 */
 	public void select(int pit, boolean playerAButton)
-	{System.out.println("select in progess");
+	{
 	
 		if(!((playerAButton && isPlayerA)||(!playerAButton && !isPlayerA)))
 		{
@@ -186,6 +186,7 @@ public class Data {
 		{
 			if(pit < counter && side[pit-1] == 1)
 			{
+				System.out.println("Capture");
 				if(side == playerA)
 				{
 					capture(side, playerB, pit);
@@ -196,7 +197,7 @@ public class Data {
 				}
 			}
 			//if the last stone goes into current player's mancala
-			else if(pit >= 7 && side[pit-1] == 1)
+			else if(pit >= 7)
 			{
 				isPlayerA = !isPlayerA;
 			}
