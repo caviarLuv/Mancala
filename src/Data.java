@@ -93,6 +93,11 @@ public class Data {
 					playerAUndo = true;
 				}
 			}
+			ChangeEvent event = new ChangeEvent(this);
+			for(ChangeListener l: listeners)
+			{
+				l.stateChanged(event);
+			}
 		}
 	}
 	
