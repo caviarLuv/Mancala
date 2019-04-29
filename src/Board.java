@@ -72,7 +72,7 @@ public class Board extends JPanel implements ChangeListener{
 			pitsB[i] = new Pit(0, 40, 45, 50, tmpB[i],"B"+(i+1));
 		}
 		
-		
+
 		//components
 		grid = new JPanel();
 		grid.setPreferredSize(new Dimension(270, 100));
@@ -100,8 +100,7 @@ public class Board extends JPanel implements ChangeListener{
 				@Override
 				public void mousePressed(MouseEvent e) {
 					model.select(((Pit)(((MyIcon) l.getIcon()).getPart())).getActualIndex(), true);
-				}
-			
+				}		
 			});
 			grid.add(l);
 		}
@@ -112,6 +111,14 @@ public class Board extends JPanel implements ChangeListener{
 		playerB = new JLabel("Player B");
 		playerB.setHorizontalAlignment(SwingConstants.CENTER);
 		JButton undo = new JButton("Undo");
+		undo.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				model.undo();		
+			}
+			
+		});
 		undoPlusB.add(undo);
 		undoPlusB.add(playerB);
 		
