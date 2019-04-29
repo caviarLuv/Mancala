@@ -116,7 +116,6 @@ public class Board extends JPanel implements ChangeListener{
 		JButton undo = new JButton("Undo");
 		undoPlusB.add(undo);
 		undoPlusB.add(playerB);
-		
 		playerA = new JLabel("Player A");
 		playerA.setForeground(Color.RED);
 		undoPlusB.setBackground(Color.YELLOW);
