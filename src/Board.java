@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -18,7 +19,8 @@ public class Board extends JPanel implements ChangeListener{
 	public static final int NUM_OF_MANCALAS = 2;
 	private Pit[] pitsA;
 	private Pit[] pitsB;
-	
+	private JLabel playerA;
+	private JLabel playerB;
 	private Mancala[] mancalas;
 	private JPanel grid;
 	private int w;
@@ -105,21 +107,25 @@ public class Board extends JPanel implements ChangeListener{
 		}
 		
 	
-		
-		JLabel playerA = new JLabel("Player A");
-		JLabel playerB = new JLabel("Player B");
-		playerA.setHorizontalAlignment(SwingConstants.CENTER);
+		JPanel undoPlusB = new JPanel();
+		undoPlusB.setLayout(new BoxLayout(undoPlusB, BoxLayout.PAGE_AXIS));		
+		playerB = new JLabel("Player B");
 		playerB.setHorizontalAlignment(SwingConstants.CENTER);
+		JButton undo = new JButton("Undo");
+		undoPlusB.add(undo);
+		undoPlusB.add(playerB);
 		
 		
-		
-		
+
+		playerA = new JLabel("Player A");
+		playerA.setForeground(Color.RED);
+		//playerA.setHorizontalAlignment(SwingConstants.CENTER);
 		this.setLayout(new BorderLayout());
 		this.add(mancalaA, BorderLayout.EAST);
 		this.add(mancalaB, BorderLayout.WEST);
 		this.add(grid, BorderLayout.CENTER);
-		this.add(playerB, BorderLayout.NORTH);
 		this.add(playerA, BorderLayout.SOUTH);
+		this.add(undoPlusB, BorderLayout.NORTH);
 		
 	}
 	
@@ -148,6 +154,15 @@ public class Board extends JPanel implements ChangeListener{
 			pitsA[i].setStone(tmpA[i]);
 			//b
 			pitsB[i].setStone(tmpB[i]);
+		}
+		if(model.getIsPLayerA()) {
+			playerA.setForeground(Color.RED);
+			playerB.setForeground(Color.BLACK);
+			
+		}
+		else {
+			playerB.setForeground(Color.RED);
+			playerA.setForeground(Color.BLACK);
 		}
 		mancalas[1].setStone(tmpA[6]);
 		mancalas[0].setStone(tmpB[6]);

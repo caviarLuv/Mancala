@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import javafx.scene.paint.Color;
+
 public class Pit implements Part{
 	private int x;
 	private int y;
@@ -15,7 +17,6 @@ public class Pit implements Part{
 	private String label;
 	private ArrayList<ChangeListener> cl;
 	
-	public static final int RADIUS = 10;
 	public Pit(int x, int y, int h, int k, int initialStone, String label) {
 		this.x = x;
 		this.y = y;
@@ -29,6 +30,8 @@ public class Pit implements Part{
 	@Override
 	public void draw(Graphics2D g2) {
 		Rectangle2D.Double p = new Rectangle2D.Double(x, y, h, k);
+		g2.fill(p);
+		g2.setColor(java.awt.Color.yellow);
 		g2.drawString(label, x+h/2, y+k);
 		g2.drawString(stones + "", x+h/2, y+k/2); 
 		
