@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -77,6 +78,7 @@ public class Board extends JPanel implements ChangeListener{
 		grid = new JPanel();
 		grid.setPreferredSize(new Dimension(270, 100));
 		GridLayout layout = new GridLayout(2, 6, 0, 0);
+		grid.setOpaque(false);
 		grid.setLayout(layout);
 		//b
 		for(int i = pitsB.length -1 ; i>=0; i--) {	
@@ -115,10 +117,13 @@ public class Board extends JPanel implements ChangeListener{
 		undoPlusB.add(undo);
 		undoPlusB.add(playerB);
 		
-		
-
 		playerA = new JLabel("Player A");
 		playerA.setForeground(Color.RED);
+		undoPlusB.setBackground(Color.YELLOW);
+		mancalaA.setBackground(Color.WHITE);
+		mancalaA.setBorder(new LineBorder(Color.YELLOW));
+		mancalaB.setBorder(new LineBorder(Color.YELLOW));
+		mancalaB.setBackground(Color.WHITE);
 		//playerA.setHorizontalAlignment(SwingConstants.CENTER);
 		this.setLayout(new BorderLayout());
 		this.add(mancalaA, BorderLayout.EAST);
@@ -126,6 +131,8 @@ public class Board extends JPanel implements ChangeListener{
 		this.add(grid, BorderLayout.CENTER);
 		this.add(playerA, BorderLayout.SOUTH);
 		this.add(undoPlusB, BorderLayout.NORTH);
+		this.setBackground(Color.YELLOW);
+		this.setOpaque(true);
 		
 	}
 	
