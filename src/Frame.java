@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
@@ -5,7 +6,7 @@ import javax.swing.JFrame;
 public class Frame extends JFrame {
 	private Board b;
 	public Frame(Data model) {
-		
+		this.setBackground(Color.YELLOW);
 		this.setTitle("Mancala");
 		setSize(400,300);
 		this.setResizable(false);

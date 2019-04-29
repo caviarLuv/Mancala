@@ -25,7 +25,8 @@ public class Mancala implements Part{
 	
 	public void draw(Graphics2D g2) {
 		Rectangle2D.Double rec = new Rectangle2D.Double(x, y, w, h);
-		
+		g2.fill(rec);
+		g2.setColor(Color.YELLOW);
 		int stoneY = this.y;
 		int stoneX = this.x;
 		for(int i = 0; i<stones; i++) {
