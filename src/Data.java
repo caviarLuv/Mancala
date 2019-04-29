@@ -318,4 +318,21 @@ public class Data {
 		return canUndo;
 	}
 	
+	/**
+	 * Mutator for initialStone
+	 */
+	public void setInitialStone(int n) {
+		//pit init
+		for(int i = 0; i < 6; i++)
+		{
+			playerA[i] = n;
+			playerB[i] = n;
+		}
+		playerA[6] = 0;
+		playerB[6] = 0;
+		for(ChangeListener l : listeners) {
+			l.stateChanged(new ChangeEvent(this));
+		}
+	}
+	
 }

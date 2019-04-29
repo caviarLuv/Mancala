@@ -7,21 +7,22 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-public class GameStartFrame extends JFrame{
-	private Data d;
-	private int initialStones;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+public class GameStartFrame extends JFrame implements ChangeListener{
+	private Data data;
 	public GameStartFrame(Data d) {
-		this.d = d;
+		this.data = d;
+		JFrame tmpF = this;
 		final Container contentPane = this.getContentPane();
-		initialStones = 0;
 		
 		JButton three = new JButton("3 stones");
 		three.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				initialStones = 3;
-				
+				data.setInitialStone(3);
+				tmpF.setVisible(false);
 			}
 			
 		});
@@ -30,8 +31,8 @@ public class GameStartFrame extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				initialStones = 4;
-				
+				data.setInitialStone(4);
+				tmpF.setVisible(false);
 			}
 			
 		});
@@ -56,7 +57,12 @@ public class GameStartFrame extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	public int getInitialStone() {
-		return initialStones;
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		if(data.getGameEnd()) {
+			this.setVisible(true);
+		}
+		
 	}
 }
