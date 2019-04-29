@@ -183,4 +183,3 @@ public class Board extends JPanel implements ChangeListener{
 		repaint();	
 	}
 }
-
