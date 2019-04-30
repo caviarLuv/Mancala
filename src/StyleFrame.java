@@ -29,11 +29,11 @@ public class StyleFrame extends JFrame{
 				tmpF.setVisible(false);
 			}		
 		});
-		JButton StyleB = new JButton("BumbleBee");
+		JButton StyleB = new JButton("Maltesers");
 		StyleB.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				f.initialGame(new BumbleBeeStrategy());
+				f.initialGame(new MalteserStrategy());
 				tmpF.setVisible(false);
 			}		
 		});
@@ -129,14 +129,15 @@ public class StyleFrame extends JFrame{
 			return backgroundColor;
 		}
 	}
-	static class BumbleBeeStrategy implements MancalaColors{
+	
+	static class MalteserStrategy implements MancalaColors{
 		private Color pitColor;
 		private Color stoneColor;
 		private Color backgroundColor;
-		public BumbleBeeStrategy() {
-			pitColor = Color.BLACK;
-			stoneColor = Color.YELLOW;
-			backgroundColor = Color.YELLOW;
+		public MalteserStrategy() {
+			pitColor = new Color(239,72,31);
+			stoneColor = new Color(253,243,219);
+			backgroundColor = new Color(255,241,192);
 		}
 		
 		@Override
