@@ -330,9 +330,12 @@ public class Data {
 		}
 		playerA[6] = 0;
 		playerB[6] = 0;
+		this.gameEnd = false;
 		for(ChangeListener l : listeners) {
 			l.stateChanged(new ChangeEvent(this));
 		}
 	}
+	
+
 	
 }
