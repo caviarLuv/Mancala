@@ -1,9 +1,12 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -75,8 +78,9 @@ public class Board extends JPanel implements ChangeListener{
 			pitsB[i] = new Pit(0, 40, 45, 50, tmpB[i],"B"+(i+1), strategy.getStoneColor(), strategy.getPitColor());
 		}
 		
-
+		
 		//components
+		
 		grid = new JPanel();
 		grid.setPreferredSize(new Dimension(270, 100));
 		GridLayout layout = new GridLayout(2, 6, 0, 0);
@@ -117,6 +121,7 @@ public class Board extends JPanel implements ChangeListener{
 		playerB = new JLabel("Player B");
 		playerB.setHorizontalAlignment(SwingConstants.CENTER);
 		JButton undo = new JButton("Undo");
+		undo.setFont(new Font("sansserif", Font.BOLD, 14));
 		undo.addActionListener(new ActionListener() {
 
 			@Override
@@ -127,9 +132,9 @@ public class Board extends JPanel implements ChangeListener{
 		});
 		undoPlusB.add(undo);
 		undoPlusB.add(playerB);
-		
 		playerA = new JLabel("Player A");
 		playerA.setForeground(Color.RED);
+
 		//playerA.setHorizontalAlignment(SwingConstants.CENTER);
 		this.setLayout(new BorderLayout());
 		this.add(mancalaA, BorderLayout.EAST);
