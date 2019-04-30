@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -73,8 +75,9 @@ public class Board extends JPanel implements ChangeListener{
 			pitsB[i] = new Pit(0, 40, 45, 50, tmpB[i],"B"+(i+1));
 		}
 		
-
+		
 		//components
+		
 		grid = new JPanel();
 		grid.setPreferredSize(new Dimension(270, 100));
 		GridLayout layout = new GridLayout(2, 6, 0, 0);
@@ -130,6 +133,7 @@ public class Board extends JPanel implements ChangeListener{
 		mancalaA.setBorder(new LineBorder(Color.YELLOW));
 		mancalaB.setBorder(new LineBorder(Color.YELLOW));
 		mancalaB.setBackground(Color.WHITE);
+		
 		//playerA.setHorizontalAlignment(SwingConstants.CENTER);
 		this.setLayout(new BorderLayout());
 		this.add(mancalaA, BorderLayout.EAST);
