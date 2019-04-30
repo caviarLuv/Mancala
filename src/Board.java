@@ -112,6 +112,7 @@ public class Board extends JPanel implements ChangeListener{
 	
 		JPanel undoPlusB = new JPanel();
 		undoPlusB.setOpaque(false);
+		undoPlusB.setLocation(100, 0);
 		undoPlusB.setLayout(new BoxLayout(undoPlusB, BoxLayout.PAGE_AXIS));		
 		playerB = new JLabel("Player B");
 		playerB.setHorizontalAlignment(SwingConstants.CENTER);
