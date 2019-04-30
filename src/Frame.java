@@ -5,18 +5,24 @@ import javax.swing.JFrame;
 
 public class Frame extends JFrame {
 	private Board b;
+	private Data model;
 	public Frame(Data model) {
-		this.setBackground(Color.YELLOW);
+		this.model = model;
 		this.setTitle("Mancala");
-		setSize(400,300);
+		setSize(500,300);
 		this.setResizable(false);
-		b = new Board(this.getSize(), model);
-		
 		this.setLayout(new FlowLayout());
-		add(b);	
 		this.pack();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public void initialGame(MancalaColors strategy) {
+		b = new Board( model, strategy);
+		add(b);	
+		model.addChangeListener(b);
+		this.setLayout(new FlowLayout());
+		this.pack();
 	}
 	public Board getBoard() {
 		return b;

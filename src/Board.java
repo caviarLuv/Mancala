@@ -27,9 +27,11 @@ public class Board extends JPanel implements ChangeListener{
 	private int w;
 	private int h;
 	private Data model;
-	
-	public Board(Dimension d, Data model) {
+	private MancalaColors strategy;
+	public Board(Data model, MancalaColors strategy) {
 		this.model = model;
+		this.strategy = strategy;
+		this.setBackground(strategy.getBackgroundColor());
 		w = 380;
 		h = 180;
 		this.setBounds(10,60,w,h);
@@ -45,14 +47,15 @@ public class Board extends JPanel implements ChangeListener{
 		
 		//initialize mancala
 		JPanel mancalaA = new JPanel();
+		mancalaA.setOpaque(false);
 		JPanel mancalaB = new JPanel();
-		
+		mancalaB.setOpaque(false);
 		
 		JLabel mALabel = new JLabel("Mancala A");
-		mancalas[1] = new Mancala(0, 25, 40, 130, tmpA[6]);
+		mancalas[1] = new Mancala(0, 25, 40, 130, tmpA[6], strategy.getStoneColor(), strategy.getPitColor());
 		
 		JLabel mBLabel = new JLabel("Mancala B");
-		mancalas[0] = new Mancala(0, 25, 40, 130, tmpB[6]);
+		mancalas[0] = new Mancala(0, 25, 40, 130, tmpB[6], strategy.getStoneColor(), strategy.getPitColor());
 		
 		
 		JLabel mB = new JLabel(new MyIcon(mancalas[0], 50, h));	
@@ -67,10 +70,9 @@ public class Board extends JPanel implements ChangeListener{
 		//initialize pits
 		for(int i = 0; i<6; i++) {
 			//a
-			pitsA[i] = new Pit(0, 0, 45, 50, tmpA[i], "A"+(i+1));
-		
+			pitsA[i] = new Pit(0, 0, 45, 50, tmpA[i], "A"+(i+1), strategy.getStoneColor(), strategy.getPitColor());
 			//b
-			pitsB[i] = new Pit(0, 40, 45, 50, tmpB[i],"B"+(i+1));
+			pitsB[i] = new Pit(0, 40, 45, 50, tmpB[i],"B"+(i+1), strategy.getStoneColor(), strategy.getPitColor());
 		}
 		
 
@@ -109,6 +111,7 @@ public class Board extends JPanel implements ChangeListener{
 		
 	
 		JPanel undoPlusB = new JPanel();
+		undoPlusB.setOpaque(false);
 		undoPlusB.setLayout(new BoxLayout(undoPlusB, BoxLayout.PAGE_AXIS));		
 		playerB = new JLabel("Player B");
 		playerB.setHorizontalAlignment(SwingConstants.CENTER);
@@ -126,11 +129,6 @@ public class Board extends JPanel implements ChangeListener{
 		
 		playerA = new JLabel("Player A");
 		playerA.setForeground(Color.RED);
-		undoPlusB.setBackground(Color.YELLOW);
-		mancalaA.setBackground(Color.WHITE);
-		mancalaA.setBorder(new LineBorder(Color.YELLOW));
-		mancalaB.setBorder(new LineBorder(Color.YELLOW));
-		mancalaB.setBackground(Color.WHITE);
 		//playerA.setHorizontalAlignment(SwingConstants.CENTER);
 		this.setLayout(new BorderLayout());
 		this.add(mancalaA, BorderLayout.EAST);
@@ -138,7 +136,7 @@ public class Board extends JPanel implements ChangeListener{
 		this.add(grid, BorderLayout.CENTER);
 		this.add(playerA, BorderLayout.SOUTH);
 		this.add(undoPlusB, BorderLayout.NORTH);
-		this.setBackground(Color.YELLOW);
+	//	this.setBackground(Color.YELLOW);
 		this.setOpaque(true);
 		
 	}
@@ -182,4 +180,5 @@ public class Board extends JPanel implements ChangeListener{
 		mancalas[0].setStone(tmpB[6]);
 		repaint();	
 	}
+
 }

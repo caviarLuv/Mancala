@@ -4,5 +4,5 @@ public interface MancalaColors {
 	
 	public Color getPitColor();
 	public Color getStoneColor();
-	
+	public Color getBackgroundColor();
 }
