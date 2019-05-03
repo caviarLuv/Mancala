@@ -331,6 +331,8 @@ public class Data {
 		playerA[6] = 0;
 		playerB[6] = 0;
 		this.gameEnd = false;
+		undoA = Arrays.copyOf(playerA, playerA.length);
+		undoB = Arrays.copyOf(playerB, playerB.length);
 		for(ChangeListener l : listeners) {
 			l.stateChanged(new ChangeEvent(this));
 		}
