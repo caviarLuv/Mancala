@@ -10,3 +10,5 @@ public class MancalaTester {
 		model.addChangeListener(gameStart);
 	}
 }
+
+
