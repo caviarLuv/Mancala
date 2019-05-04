@@ -35,7 +35,7 @@ public class Board extends JPanel implements ChangeListener{
 		this.model = model;
 		this.strategy = strategy;
 		this.setBackground(strategy.getBackgroundColor());
-		w = 380;
+		w = 400;
 		h = 180;
 		this.setBounds(10,60,w,h);
 		
@@ -55,16 +55,17 @@ public class Board extends JPanel implements ChangeListener{
 		mancalaB.setOpaque(false);
 		
 		JLabel mALabel = new JLabel("Mancala A");
-		mancalas[1] = new Mancala(0, 25, 40, 130, tmpA[6], strategy.getStoneColor(), strategy.getPitColor());
+		mancalas[1] = new Mancala(10, 40, 40, 130, tmpA[6], strategy.getStoneColor(), strategy.getPitColor());
 		
 		JLabel mBLabel = new JLabel("Mancala B");
-		mancalas[0] = new Mancala(0, 25, 40, 130, tmpB[6], strategy.getStoneColor(), strategy.getPitColor());
+		mancalas[0] = new Mancala(0, 40, 40, 130, tmpB[6], strategy.getStoneColor(), strategy.getPitColor());
 		
 		
 		JLabel mB = new JLabel(new MyIcon(mancalas[0], 50, h));	
 		JLabel mA = new JLabel(new MyIcon(mancalas[1], 50, h));
 
-		
+		mALabel.setHorizontalAlignment(SwingConstants.CENTER);
+		mBLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		mancalaA.add(mA);
 		mancalaA.add(mALabel);
 		mancalaB.add(mBLabel);
@@ -82,7 +83,7 @@ public class Board extends JPanel implements ChangeListener{
 		//components
 		
 		grid = new JPanel();
-		grid.setPreferredSize(new Dimension(270, 100));
+		grid.setPreferredSize(new Dimension(275, 200));
 		GridLayout layout = new GridLayout(2, 6, 0, 0);
 		grid.setOpaque(false);
 		grid.setLayout(layout);
@@ -117,7 +118,10 @@ public class Board extends JPanel implements ChangeListener{
 		JPanel undoPlusB = new JPanel();
 		undoPlusB.setOpaque(false);
 		undoPlusB.setLocation(100, 0);
-		undoPlusB.setLayout(new BoxLayout(undoPlusB, BoxLayout.PAGE_AXIS));		
+		undoPlusB.setLayout(new BorderLayout());
+		playerA = new JLabel("Player A");
+		playerA.setForeground(Color.RED);
+		playerA.setHorizontalAlignment(SwingConstants.CENTER);
 		playerB = new JLabel("Player B");
 		playerB.setHorizontalAlignment(SwingConstants.CENTER);
 		JButton undo = new JButton("Undo");
@@ -130,19 +134,22 @@ public class Board extends JPanel implements ChangeListener{
 			}
 			
 		});
-		undoPlusB.add(undo);
-		undoPlusB.add(playerB);
-		playerA = new JLabel("Player A");
-		playerA.setForeground(Color.RED);
-
-		//playerA.setHorizontalAlignment(SwingConstants.CENTER);
+		JPanel center = new JPanel();
+		center.setLayout(new BoxLayout(center, BoxLayout.Y_AXIS));
+		center.add(playerB);
+		center.add(grid);
+		center.add(playerA);
+		center.setBackground(strategy.getBackgroundColor());
+		undoPlusB.add(undo, BorderLayout.WEST);
+//		undoPlusB.add(playerB);
+		JPanel bottom = new JPanel();
+		bottom.setBackground(strategy.getBackgroundColor());
 		this.setLayout(new BorderLayout());
 		this.add(mancalaA, BorderLayout.EAST);
 		this.add(mancalaB, BorderLayout.WEST);
-		this.add(grid, BorderLayout.CENTER);
-		this.add(playerA, BorderLayout.SOUTH);
+		this.add(center, BorderLayout.CENTER);
+		this.add(bottom, BorderLayout.SOUTH);
 		this.add(undoPlusB, BorderLayout.NORTH);
-	//	this.setBackground(Color.YELLOW);
 		this.setOpaque(true);
 		
 	}
@@ -151,7 +158,6 @@ public class Board extends JPanel implements ChangeListener{
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		//this.paint(g);
 	}
 	
 	public void paint(Graphics g)  {
