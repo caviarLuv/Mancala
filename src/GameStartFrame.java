@@ -9,8 +9,22 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+/**
+ * @author Julia Chin, Stan He, Tsz Ting Yu
+ * @version 1.0 5/4/19
+ */
+
+/**
+ * Frame to prompt user to select the number of stones
+ */
 public class GameStartFrame extends JFrame implements ChangeListener{
 	private Data data;
+	
+	/**
+	 * Constructs frame with a option to select number of stones
+	 * @param d - model of Mancala game
+	 */
 	public GameStartFrame(Data d) {
 		this.data = d;
 		JFrame tmpF = this;
@@ -57,6 +71,9 @@ public class GameStartFrame extends JFrame implements ChangeListener{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	/**
+	 * State Changed method
+	 */
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		if(data.getGameEnd()) {

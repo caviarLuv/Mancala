@@ -1,5 +1,13 @@
 import java.awt.Color;
 
+/**
+ * @author Julia Chin, Stan He, Tsz Ting Yu
+ * @version 1.0 5/4/19
+ */
+
+/**
+ * Interface representing stratgies
+ */
 public interface MancalaColors {	
 	public Color getPitColor();
 	public Color getStoneColor();

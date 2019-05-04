@@ -1,5 +1,13 @@
 import java.util.Scanner;
 
+/**
+ * @author Julia Chin, Stan He, Tsz Ting Yu
+ * @version 1.0 5/4/19
+ */
+
+/**
+ * A tester class for the Model.
+ */
 public class DataTester {
 	public static void main(String[] args)
 	{
@@ -26,6 +34,9 @@ public class DataTester {
 		}
 	}
 	
+	/**
+	 * Prints data of Mancala game
+	 */
 	public static void print(Data myData)
 	{
 		int[] barr = myData.getBData();

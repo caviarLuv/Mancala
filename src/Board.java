@@ -18,6 +18,14 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/**
+ * @author Julia Chin, Stan He, Tsz Ting Yu
+ * @version 1.0 5/4/19
+ */
+
+/**
+ * View of Mancala game
+ */
 public class Board extends JPanel implements ChangeListener{
 	public static final int NUM_OF_PITS = 12;
 	public static final int NUM_OF_MANCALAS = 2;
@@ -31,6 +39,12 @@ public class Board extends JPanel implements ChangeListener{
 	private int h;
 	private Data model;
 	private MancalaColors strategy;
+	
+	/**
+	 * Constructs a board with a data model and strategy pattern
+	 * @param model - the data model
+	 * @param strategy - the strategy pattern
+	 */
 	public Board(Data model, MancalaColors strategy) {
 		this.model = model;
 		this.strategy = strategy;
@@ -143,16 +157,25 @@ public class Board extends JPanel implements ChangeListener{
 		this.setOpaque(true);
 	}
 	
+	/**
+	 * Paint Component method
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 	}
 	
+	/**
+	 * Paint method
+	 */
+	@Override
 	public void paint(Graphics g)  {
 		super.paint(g);
-		Graphics2D g2 = (Graphics2D) g;
 	}
 
+	/**
+	 * State Changed method
+	 */
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		int[] tmpA = model.getAData();

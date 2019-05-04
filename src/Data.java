@@ -1,8 +1,15 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import javax.swing.event.*;
 
+/**
+ * @author Julia Chin, Stan He, Tsz Ting Yu
+ * @version 1.0 5/4/19
+ */
+
+/**
+ * Model of Mancala game
+ */
 public class Data {
 	
 	//who's turn is it

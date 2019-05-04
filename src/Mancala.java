@@ -4,6 +4,14 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
+/**
+ * @author Julia Chin, Stan He, Tsz Ting Yu
+ * @version 1.0 5/4/19
+ */
+
+/**
+ * A representation of a Mancala
+ */
 public class Mancala implements Part{
 	private int x;
 	private int y;
@@ -12,6 +20,17 @@ public class Mancala implements Part{
 	private int stones;
 	private Color stoneColor;
 	private Color mancalaColor;
+	
+	/**
+	 * Constructs a Mancala with the size of the Mancala, number of stones, stone color, and Mancala color
+	 * @param x - x-position of the Mancala
+	 * @param y - y -position of the Mancala
+	 * @param w - width of the Mancala
+	 * @param h - height of the Mancala
+	 * @param initialS - stones in the Mancala
+	 * @param stoneColor - color of the stones
+	 * @param mancalaColor - color of the Mancala
+	 */
 	public Mancala(int x, int y, int w, int h, int initialS, Color stoneColor, Color mancalaColor) {
 		this.x = x;
 		this.y = y;
@@ -21,11 +40,18 @@ public class Mancala implements Part{
 		this.stoneColor = stoneColor;
 		this.mancalaColor = mancalaColor;
 	}
-
+	
+	/**
+	 * Sets the number of stones
+	 */
 	public void setStone(int s) {
 		stones = s;
 	}
 	
+	/**
+	 * Draws the Mancala
+	 * @param g2 - the graphics
+	 */
 	public void draw(Graphics2D g2) {
 		Rectangle2D.Double rec = new Rectangle2D.Double(x, y, w, h);
 		g2.setColor(mancalaColor);
@@ -49,6 +75,9 @@ public class Mancala implements Part{
 		g2.draw(rec);
 	}
 
+	/**
+	 * Adds stones to the Mancala
+	 */
 	@Override
 	public void addStone() {
 		stones++;

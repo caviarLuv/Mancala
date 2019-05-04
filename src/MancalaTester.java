@@ -1,3 +1,12 @@
+
+/**
+ * @author Julia Chin, Stan He, Tsz Ting Yu
+ * @version 1.0 5/4/19
+ */
+
+/**
+ * Controller of the Mancala game
+ */
 public class MancalaTester {
 	public static void main(String[] args) {
 
