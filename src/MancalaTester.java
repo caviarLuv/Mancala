@@ -6,7 +6,6 @@ public class MancalaTester {
 		GameStartFrame gameStart = new GameStartFrame(model); //initial user input num of stone
 		StyleFrame style = new StyleFrame(frame);
 
-		//model.addChangeListener(frame.getBoard());
 		model.addChangeListener(gameStart);
 	}
 }

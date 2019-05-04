@@ -65,21 +65,6 @@ public class StyleFrame extends JFrame{
 		this.add(styles);
 		this.pack();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	
-//		if(StyleA.getModel().isPressed() || StyleB.getModel().isPressed()){
-//			if(StyleA.getModel().isPressed()){
-//				
-//			}
-//			if(StyleA.getModel().isPressed()){
-//							
-//			}
-//			this.addWindowListener(new WindowAdapter(){
-//				public void windowClosing(WindowEvent e){
-//					
-//					
-//				}
-//			});
-//		}
 	}
 	
 	static class DefaultStrategy implements MancalaColors{
@@ -154,7 +139,6 @@ public class StyleFrame extends JFrame{
 			return backgroundColor;
 		}
 
-		
 	}
 
 }

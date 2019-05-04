@@ -38,12 +38,8 @@ public class Board extends JPanel implements ChangeListener{
 		w = 400;
 		h = 180;
 		this.setBounds(10,60,w,h);
-		
-
 		int[] tmpA = model.getAData();
 		int[] tmpB = model.getBData();
-		
-		
 		pitsA = new Pit[6];
 		pitsB = new Pit[6];
 		mancalas = new Mancala[NUM_OF_MANCALAS];
@@ -53,14 +49,10 @@ public class Board extends JPanel implements ChangeListener{
 		mancalaA.setOpaque(false);
 		JPanel mancalaB = new JPanel();
 		mancalaB.setOpaque(false);
-		
 		JLabel mALabel = new JLabel("Mancala A");
 		mancalas[1] = new Mancala(10, 40, 40, 130, tmpA[6], strategy.getStoneColor(), strategy.getPitColor());
-		
 		JLabel mBLabel = new JLabel("Mancala B");
 		mancalas[0] = new Mancala(0, 40, 40, 130, tmpB[6], strategy.getStoneColor(), strategy.getPitColor());
-		
-		
 		JLabel mB = new JLabel(new MyIcon(mancalas[0], 50, h));	
 		JLabel mA = new JLabel(new MyIcon(mancalas[1], 50, h));
 
@@ -81,12 +73,12 @@ public class Board extends JPanel implements ChangeListener{
 		
 		
 		//components
-		
 		grid = new JPanel();
 		grid.setPreferredSize(new Dimension(275, 200));
 		GridLayout layout = new GridLayout(2, 6, 0, 0);
 		grid.setOpaque(false);
 		grid.setLayout(layout);
+		
 		//b
 		for(int i = pitsB.length -1 ; i>=0; i--) {	
 			JLabel l = new JLabel(new MyIcon(pitsB[i],45,50));
@@ -114,7 +106,6 @@ public class Board extends JPanel implements ChangeListener{
 			grid.add(l);
 		}
 		
-	
 		JPanel undoPlusB = new JPanel();
 		undoPlusB.setOpaque(false);
 		undoPlusB.setLocation(100, 0);
@@ -141,7 +132,6 @@ public class Board extends JPanel implements ChangeListener{
 		center.add(playerA);
 		center.setBackground(strategy.getBackgroundColor());
 		undoPlusB.add(undo, BorderLayout.WEST);
-//		undoPlusB.add(playerB);
 		JPanel bottom = new JPanel();
 		bottom.setBackground(strategy.getBackgroundColor());
 		this.setLayout(new BorderLayout());
@@ -151,9 +141,7 @@ public class Board extends JPanel implements ChangeListener{
 		this.add(bottom, BorderLayout.SOUTH);
 		this.add(undoPlusB, BorderLayout.NORTH);
 		this.setOpaque(true);
-		
 	}
-	
 	
 	@Override
 	public void paintComponent(Graphics g) {
@@ -163,10 +151,7 @@ public class Board extends JPanel implements ChangeListener{
 	public void paint(Graphics g)  {
 		super.paint(g);
 		Graphics2D g2 = (Graphics2D) g;
-//		Rectangle2D.Double board = new Rectangle2D.Double(10, 60, w, h);  //x = 10; y = 60
-		//g2.draw(board);
 	}
-
 
 	@Override
 	public void stateChanged(ChangeEvent e) {

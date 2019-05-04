@@ -56,7 +56,6 @@ public class GameStartFrame extends JFrame implements ChangeListener{
 		this.pack();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
 
 	@Override
 	public void stateChanged(ChangeEvent e) {

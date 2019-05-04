@@ -16,18 +16,13 @@ public class Data {
 	private boolean playerBUndo;
 	private boolean prevPlayerWasA;
 	private boolean canUndo;
-	
 	private int undoAmount;
-	
 	
 	//the pits(0-5) and the mancala(6) 
 	private int[] playerA;
 	private int[] playerB;
-	
 	private int[] undoA;
 	private int[] undoB;
-
-	
 	private ArrayList<ChangeListener> listeners;
 	
 	/**
@@ -105,9 +100,7 @@ public class Data {
 	 * Method carries out game rules for if a pit has been selected 
 	 * @param pit the pit that has been selected
 	 */
-	public void select(int pit, boolean playerAButton)
-	{
-		
+	public void select(int pit, boolean playerAButton){
 		if(!((playerAButton && isPlayerA)||(!playerAButton && !isPlayerA)))
 		{
 			return;
@@ -130,7 +123,7 @@ public class Data {
 		
 		if(canUndo)
 		{
-			System.out.println("Making copy");
+			//System.out.println("Making copy");
 			undoA = Arrays.copyOf(playerA, playerA.length);
 			undoB = Arrays.copyOf(playerB, playerB.length);
 			undoAmount = 3;

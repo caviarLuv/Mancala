@@ -6,7 +6,6 @@ import java.awt.Color;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-
 public class Pit implements Part{
 	private int x;
 	private int y;
@@ -37,7 +36,6 @@ public class Pit implements Part{
 		
 		g2.setColor(Color.BLACK);
 		g2.drawString(label, x+h/2, y+10);
-		//g2.drawString(stones + "", x+h/2, y+k/2); 
 		
 		g2.setColor(stoneColor);
 		int stoneY = this.y + k - RADIUS;
