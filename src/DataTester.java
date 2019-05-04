@@ -6,7 +6,7 @@ import java.util.Scanner;
  */
 
 /**
- * A tester class for the Model.
+ * A tester class for the Model
  */
 public class DataTester {
 	public static void main(String[] args)

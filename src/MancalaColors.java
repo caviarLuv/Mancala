@@ -6,7 +6,7 @@ import java.awt.Color;
  */
 
 /**
- * Interface representing stratgies
+ * Interface representing strategies
  */
 public interface MancalaColors {	
 	public Color getPitColor();
